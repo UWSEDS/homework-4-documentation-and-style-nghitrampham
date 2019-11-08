@@ -1,6 +1,5 @@
-"""
-This module is used for pytest
-"""
+"""This module is used for pytest. Basically we are writing
+some unit test cases to check our dataframe's requirements."""
 
 import pandas as pd
 import numpy as np
@@ -12,7 +11,7 @@ list_cols = ['Date', 'Fremont Bridge East Sidewalk', 'Fremont Bridge West Sidewa
 
 def check_columns(df, lst_col):
     """
-    @param df: dataframe 
+    @param df: dataframe
     @param lst_col: column name of dataframe
     @return: return 1 if checking condition is true
     """
