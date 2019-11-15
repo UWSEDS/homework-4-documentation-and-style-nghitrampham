@@ -9,73 +9,89 @@ list_cols = ['Date', 'Fremont Bridge East Sidewalk', 'Fremont Bridge West Sidewa
 
 ###### All functions that check conditions #######
 
-def check_columns(df, lst_col):
+def check_columns(data, lst_col):
     """
     @param df: dataframe
     @param lst_col: column name of dataframe
     @return: return 1 if checking condition is true
     """
-    return list(df.columns) == lst_col
+    return list(data.columns) == lst_col
 
-def check_type_column(df):
+def check_type_column(data):
     """
-    @param df: dataframe 
+    @param df: dataframe
     @return: return 1 if checking condition is true
     """
-    return np.sum([df[x].map(type).nunique() -1 for x in df.columns]) == 0
+    return np.sum([data[x].map(type).nunique() -1 for x in data.columns]) == 0
 
 def check_unique_type(df):
     """
-    @param df: dataframe 
+    @param df: dataframe
     @return: return 1 if checking condition is true
     """
     unique_check = []
     for col in list(df.columns):
         is_unique = np.sum([0 if type(df[col][0]) == type(df[col][i])\
-                             else 1 for i in range(0,df.shape[0])])
+                             else 1 for i in range(0, df.shape[0])])
         unique_check.append(is_unique)
     return np.sum(unique_check) == 0
 
-def check_na(df):
+def check_na(data):
     """
-    @param df: dataframe 
+    @param df: dataframe
     @return: return 1 if checking condition is true
     """
-    return np.sum([df[x].isnull().sum() for x in df.columns]) == 0
+    return np.sum([data[x].isnull().sum() for x in data.columns]) == 0
 
-def check_empty_dataframe(df):
+def check_empty_dataframe(data):
     """
-    @param df: dataframe 
+    @param df: dataframe
     @return: return 1 if checking condition is true
     """
-    return df.shape[0] >= 1
+    return data.shape[0] >= 1
 
-def check_num_row(df):
+def check_num_row(data):
     """
-    @param df: dataframe 
+    @param df: dataframe
     @return: return 1 if checking condition is true
     """
-    return df.shape[0] > 10
+    return data.shape[0] > 10
 
 
 ##### Test functions for pytest ######################
 
 def test_columns_name():
-	assert check_columns(data_df, list_cols) == 1
+    """
+    @ no param, this is test function
+    """
+    assert check_columns(data_df, list_cols) == 1
 
 def test_type_column():
+    """
+    @ no param, this is test function
+    """
     assert check_type_column(data_df) == 1
 
 def test_unique_type():
+    """
+    @ no param, this is test function
+    """
     assert check_unique_type(data_df) == 1
 
 def test_empty_dataframe():
+    """
+    @ no param, this is test function
+    """
     assert check_empty_dataframe(data_df) == 1
 
 def test_num_now():
+    """
+    @ no param, this is test function
+    """
     assert check_num_row(data_df) == 1
 
 def test_na():
+    """
+    @ no param, this is test function
+    """
     assert check_na(data_df) == 1
-
-
